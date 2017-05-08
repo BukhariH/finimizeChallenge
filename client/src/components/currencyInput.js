@@ -9,9 +9,14 @@ class CurrencyInput extends Component {
         <div className="form-group">
           <label className="col-md-4 control-label">Currency to convert to</label>
           <div className="col-md-4">
-            <select id="selectbasic" name="selectbasic" className="form-control" required>
-              <option key="1">Test 1</option>
-              <option key="2">Test 2</option>
+            <select name="currencyInput" className="form-control" onChange={this.props.changeHandler} required>
+              {this.props.currencyList.map(value =>
+                <option
+                  key={value}
+                >
+                  {value}
+                </option> 
+              )}  
             </select>
           </div>
         </div>
