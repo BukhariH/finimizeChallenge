@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../App.css';
+import PropTypes from 'prop-types';
 
 
 class CalculateButton extends Component {
@@ -12,5 +13,9 @@ class CalculateButton extends Component {
   }
 
 }
+
+CalculateButton.propTypes = {
+  calcFunc: PropTypes.function
+};
 
 export default CalculateButton;

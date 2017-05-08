@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import PropTypes from 'prop-types';
 
 class CurrencyInput extends Component {
 
@@ -25,5 +26,9 @@ class CurrencyInput extends Component {
   }
 
 }
+
+CurrencyInput.propTypes = {
+  changeHandler: PropTypes.function
+};
 
 export default CurrencyInput;
