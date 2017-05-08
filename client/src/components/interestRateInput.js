@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import PropTypes from 'prop-types';
 
 class InterestRateInput extends Component {
 
@@ -20,5 +21,9 @@ class InterestRateInput extends Component {
   }
 
 }
+
+InterestRateInput.propTypes = {
+  changeHandler: PropTypes.function
+};
 
 export default InterestRateInput;

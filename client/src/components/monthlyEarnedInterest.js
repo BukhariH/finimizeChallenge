@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import PropTypes from 'prop-types';
 
 class MonthlyEarnedInterest extends Component {
 
@@ -20,7 +21,11 @@ class MonthlyEarnedInterest extends Component {
     );
   }
 
-
 }
+
+MonthlyEarnedInterest.propTypes = {
+  earned: PropTypes.string,
+  earnedConversion: PropTypes.string
+};
 
 export default MonthlyEarnedInterest;

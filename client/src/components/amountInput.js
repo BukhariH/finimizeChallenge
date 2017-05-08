@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import PropTypes from 'prop-types';
 
 class AmountInput extends Component {
 
@@ -20,5 +21,9 @@ class AmountInput extends Component {
   }
 
 }
+
+AmountInput.propTypes = {
+  changeHandler: PropTypes.function
+};
 
 export default AmountInput;
