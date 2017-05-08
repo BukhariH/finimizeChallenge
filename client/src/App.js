@@ -19,13 +19,14 @@ class App extends Component {
 
   render() {
 
-    // Set currency list dropdown
+    // Set currency list dropdown values then load if currencies have been set
     let currencyDropdownComp = null;
     if (this.state && this.state.currencies) {
       let currencyList = Object.keys(this.state.currencies)
       currencyDropdownComp = <CurrencyInput currencyList={currencyList} changeHandler={this.changeHandler.bind(this)} />;
     }
 
+    // Show results if they have been calculated
     let annualEarnedInterestComp = null;
     let monthlyEarnedInterestComp = null;
     if (this.state && this.state.annualEarned && this.state.annualEarnedConverted && this.state.monthlyEarned && this.state.monthlyEarnedConverted) {
@@ -75,6 +76,7 @@ class App extends Component {
             });
     };
 
+    // Event handler for inputs which sets the values in state
     changeHandler = (event) => {
         switch (event.target.name) {
             case 'amountInput':
@@ -97,6 +99,7 @@ class App extends Component {
         }
     };
 
+    // Calculates the results and then sets them in the state
     calculate = () => {
         if (this.state && this.state.currencies && this.state.amount && this.state.interest && this.state.currency) {
             let annualEarned = (this.state.amount * (this.state.interest / 100)).toFixed(2);
