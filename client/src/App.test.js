@@ -8,8 +8,6 @@ import AnnualEarnedInterest from './components/annualEarnedInterest';
 import MonthlyEarnedInterest from './components/monthlyEarnedInterest';
 import CalculateButton from './components/calculateButton';
 
-const emptyFunc = ()=>{};
-
 describe('<App />', () => {
   it('renders the base container', () => {
     const wrapper = shallow(<App />);
@@ -17,17 +15,17 @@ describe('<App />', () => {
   });
 
   it('renders amount input component', () => {
-    const wrapper = shallow(<AmountInput changeHandler={emptyFunc} />);
+    const wrapper = shallow(<AmountInput changeHandler={()=>{}} />);
     expect(wrapper.contains("Initial Amount")).toEqual(true);
   });
 
   it('renders interest rate component', () => {
-    const wrapper = shallow(<InterestRateInput changeHandler={emptyFunc} />);
+    const wrapper = shallow(<InterestRateInput changeHandler={()=>{}} />);
     expect(wrapper.contains("Interest Rate")).toEqual(true);
   });
 
   it('renders currency component', () => {
-    const wrapper = shallow(<CurrencyInput currencyList={["USD", "EUR"]} changeHandler={emptyFunc} />);
+    const wrapper = shallow(<CurrencyInput currencyList={["USD", "EUR"]} changeHandler={()=>{}} />);
     expect(wrapper.find('option').length).toEqual(2);
   });
 
@@ -42,7 +40,7 @@ describe('<App />', () => {
   });
 
   it('renders calculate button', () => {
-    const wrapper = shallow(<CalculateButton calcFunc={emptyFunc}/>);
+    const wrapper = shallow(<CalculateButton calcFunc={()=>{}}/>);
     expect(wrapper.contains("Figure this all out! 🤓")).toEqual(true);
   });
 });
