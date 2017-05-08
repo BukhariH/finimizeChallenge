@@ -23,7 +23,7 @@ class App extends Component {
     let currencyDropdownComp = null;
     if (this.state && this.state.currencies) {
       let currencyList = Object.keys(this.state.currencies)
-      currencyDropdownComp = <CurrencyInput currencyList={currencyList} changeHandler={this.changeHandler.bind(this)} />;
+      currencyDropdownComp = <CurrencyInput currencyList={currencyList} changeHandler={this.changeHandler} />;
     }
 
     // Show results if they have been calculated
@@ -46,7 +46,7 @@ class App extends Component {
             {monthlyEarnedInterestComp}
           </fieldset>
         </form>
-        <button id="calc-btn" name="calc-btn" className="btn btn-success" onClick={this.calculate.bind(this)}>Figure this all out! 🤓</button>
+        <button id="calc-btn" name="calc-btn" className="btn btn-success" onClick={this.calculate}>Figure this all out! 🤓</button>
       </div>
     );
   }
