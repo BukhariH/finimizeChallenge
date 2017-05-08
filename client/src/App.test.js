@@ -24,3 +24,8 @@ it('renders currency component', () => {
   const wrapper = shallow(<CurrencyInput />);
   expect(wrapper.contains("Currency to convert to")).toEqual(true);
 });
+
+it('renders currency component', () => {
+  const wrapper = shallow(<CurrencyInput />);
+  expect(wrapper.contains("Currency to convert to")).toEqual(true);
+});

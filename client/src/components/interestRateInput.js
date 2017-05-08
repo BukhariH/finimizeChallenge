@@ -10,7 +10,7 @@ class InterestRateInput extends Component {
           <label className="col-md-4 control-label">Interest Rate</label>
           <div className="col-md-4">
             <div className="input-group">
-              <input id="interestRate" name="interestRate" className="form-control" placeholder="0" min="0" type="number" required />
+              <input name="interestRateInput" className="form-control" placeholder="0" min="0" type="number" onChange={this.props.changeHandler} required />
               <span className="input-group-addon">%</span>
             </div>    
           </div>
