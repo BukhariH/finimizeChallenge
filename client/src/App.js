@@ -8,6 +8,8 @@ import InterestRateInput from './components/interestRateInput';
 import CurrencyInput from './components/currencyInput';
 import AnnualEarnedInterest from './components/annualEarnedInterest';
 import MonthlyEarnedInterest from './components/monthlyEarnedInterest';
+import CalculateButton from './components/calculateButton';
+
 
 class App extends Component {
 
@@ -46,7 +48,7 @@ class App extends Component {
             {monthlyEarnedInterestComp}
           </fieldset>
         </form>
-        <button id="calc-btn" name="calc-btn" className="btn btn-success" onClick={this.calculate}>Figure this all out! 🤓</button>
+        <CalculateButton calcFunc={this.calculate}/>
       </div>
     );
   }

@@ -6,6 +6,7 @@ import InterestRateInput from './components/interestRateInput';
 import CurrencyInput from './components/currencyInput';
 import AnnualEarnedInterest from './components/annualEarnedInterest';
 import MonthlyEarnedInterest from './components/monthlyEarnedInterest';
+import CalculateButton from './components/calculateButton';
 
 
 describe('<App />', () => {
@@ -37,5 +38,10 @@ describe('<App />', () => {
   it('renders montly earned intrest component', () => {
     const wrapper = shallow(<MonthlyEarnedInterest earned={55} earnedConversion={60} />);
     expect(wrapper.find('input').length).toEqual(2);
+  });
+
+  it('renders calculate button', () => {
+    const wrapper = shallow(<CalculateButton calcFunc={()=>{}}/>);
+    expect(wrapper.contains("Figure this all out! 🤓")).toEqual(true);
   });
 });
