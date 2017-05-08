@@ -17,34 +17,18 @@ class App extends Component {
     this.setState({interest: 0});
   }
 
-  changeHandler = (event) => {
-    switch(event.target.name){
-      case 'amountInput':
-        this.setState({amount: event.target.value});
-        break;
-      case 'interestRateInput':
-        this.setState({interest: event.target.value});
-        break;
-      case 'currencyInput':
-        this.setState({currency: event.target.value});
-        break;
-      default:
-        break;
-    }
-  };
-
   render() {
 
     // Set currency list dropdown
     let currencyDropdownComp = null;
-    if (this.state != null && this.state.currencies != null) {
+    if (this.state && this.state.currencies) {
       let currencyList = Object.keys(this.state.currencies)
-      currencyDropdownComp = <CurrencyInput currencyList={currencyList} changeHandler={this.changeHandler} />;
+      currencyDropdownComp = <CurrencyInput currencyList={currencyList} changeHandler={this.changeHandler.bind(this)} />;
     }
 
     let annualEarnedInterestComp = null;
     let monthlyEarnedInterestComp = null;
-    if (this.state != null && this.state.annualEarned != null && this.state.annualEarnedConverted != null) {
+    if (this.state && this.state.annualEarned && this.state.annualEarnedConverted && this.state.monthlyEarned && this.state.monthlyEarnedConverted) {
       annualEarnedInterestComp = <AnnualEarnedInterest earned={this.state.annualEarned} earnedConversion={this.state.annualEarnedConverted}/>
       monthlyEarnedInterestComp = <MonthlyEarnedInterest earned={this.state.monthlyEarned} earnedConversion={this.state.monthlyEarnedConverted}/>
     }
@@ -61,7 +45,7 @@ class App extends Component {
             {monthlyEarnedInterestComp}
           </fieldset>
         </form>
-        <button id="calc-btn" name="calc-btn" className="btn btn-success" onClick={this.calculate}>Figure this all out! 🤓</button>
+        <button id="calc-btn" name="calc-btn" className="btn btn-success" onClick={this.calculate.bind(this)}>Figure this all out! 🤓</button>
       </div>
     );
   }
@@ -88,19 +72,51 @@ class App extends Component {
             })
             .catch(() => {
                 throw Error("Error parsing json then setting state")
-                });
+            });
     };
 
-  calculate = () => {
-    if (this.state && this.state.currencies && this.state.amount && this.state.interest && this.state.currency) {
-      const annualEarned = (this.state.amount * (this.state.interest/100)).toFixed(2);
-      const annualEarnedConverted = (annualEarned * this.state.currencies[this.state.currency]).toFixed(2);
-      const monthlyEarned = (annualEarned/12).toFixed(2);
-      const monthlyEarnedConverted = (annualEarnedConverted/12).toFixed(2);
+    changeHandler = (event) => {
+        switch (event.target.name) {
+            case 'amountInput':
+                this.setState({
+                    amount: event.target.value
+                });
+                break;
+            case 'interestRateInput':
+                this.setState({
+                    interest: event.target.value
+                });
+                break;
+            case 'currencyInput':
+                this.setState({
+                    currency: event.target.value
+                });
+                break;
+            default:
+                break;
+        }
+    };
 
-      this.setState({annualEarned: annualEarned, annualEarnedConverted: annualEarnedConverted, monthlyEarned: monthlyEarned, monthlyEarnedConverted: monthlyEarnedConverted});
-    }
-  };
+    calculate = () => {
+        if (this.state && this.state.currencies && this.state.amount && this.state.interest && this.state.currency) {
+            let annualEarned = (this.state.amount * (this.state.interest / 100)).toFixed(2);
+            let annualEarnedConverted = (annualEarned * this.state.currencies[this.state.currency]).toFixed(2);
+            let monthlyEarned = (annualEarned / 12).toFixed(2);
+            let monthlyEarnedConverted = (annualEarnedConverted / 12).toFixed(2);
+
+            annualEarned += " GBP";
+            annualEarnedConverted += " " + this.state.currency;
+            monthlyEarned += " GBP";
+            monthlyEarnedConverted += " " + this.state.currency;
+
+            this.setState({
+                annualEarned: annualEarned,
+                annualEarnedConverted: annualEarnedConverted,
+                monthlyEarned: monthlyEarned,
+                monthlyEarnedConverted: monthlyEarnedConverted
+            });
+        }
+    };
 
 }
 
