@@ -15,7 +15,7 @@ class CalculateButton extends Component {
 }
 
 CalculateButton.propTypes = {
-  calcFunc: PropTypes.function
+  calcFunc: PropTypes.func
 };
 
 export default CalculateButton;

@@ -23,7 +23,7 @@ class InterestRateInput extends Component {
 }
 
 InterestRateInput.propTypes = {
-  changeHandler: PropTypes.function
+  changeHandler: PropTypes.func.isRequired
 };
 
 export default InterestRateInput;

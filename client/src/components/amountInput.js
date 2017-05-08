@@ -23,7 +23,7 @@ class AmountInput extends Component {
 }
 
 AmountInput.propTypes = {
-  changeHandler: PropTypes.function
+  changeHandler: PropTypes.func
 };
 
 export default AmountInput;

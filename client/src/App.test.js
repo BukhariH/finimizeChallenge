@@ -8,7 +8,6 @@ import AnnualEarnedInterest from './components/annualEarnedInterest';
 import MonthlyEarnedInterest from './components/monthlyEarnedInterest';
 import CalculateButton from './components/calculateButton';
 
-
 describe('<App />', () => {
   it('renders the base container', () => {
     const wrapper = shallow(<App />);
@@ -31,12 +30,12 @@ describe('<App />', () => {
   });
 
   it('renders annual earned intrest component', () => {
-    const wrapper = shallow(<AnnualEarnedInterest earned={100} earnedConversion={110} />);
+    const wrapper = shallow(<AnnualEarnedInterest earned={"100 GBP"} earnedConversion={"110 USD"} />);
     expect(wrapper.find('input').length).toEqual(2);
   });
 
   it('renders montly earned intrest component', () => {
-    const wrapper = shallow(<MonthlyEarnedInterest earned={55} earnedConversion={60} />);
+    const wrapper = shallow(<MonthlyEarnedInterest earned={"55 GBP"} earnedConversion={"60 USD"} />);
     expect(wrapper.find('input').length).toEqual(2);
   });
 

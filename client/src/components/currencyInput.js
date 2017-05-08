@@ -28,7 +28,7 @@ class CurrencyInput extends Component {
 }
 
 CurrencyInput.propTypes = {
-  changeHandler: PropTypes.function
+  changeHandler: PropTypes.func
 };
 
 export default CurrencyInput;
